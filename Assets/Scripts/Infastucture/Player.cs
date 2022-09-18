@@ -21,7 +21,14 @@ namespace Infastucture
         public void Freeze()
         {
             _playerMovement.DisableMovement();
-            _camera.enabled = false;
+            _camera.DisableControll();
+        }
+
+        public void Kill()
+        {
+            Freeze();
+            _rigidbody.constraints = RigidbodyConstraints.None;
+            _rigidbody.AddTorque(10, 5, 2);
         }
     }
 }

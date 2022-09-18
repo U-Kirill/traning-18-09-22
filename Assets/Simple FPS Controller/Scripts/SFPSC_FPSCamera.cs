@@ -53,9 +53,13 @@ public class SFPSC_FPSCamera : MonoBehaviour
     private float rotX = 0.0f, rotY = 0.0f;
     [HideInInspector]
     public float rotZ = 0.0f;
+
+    private bool _isControllAlowed = true;
+
     private void Update()
     {
         // Mouse input
+        
         mouseX = Input.GetAxis("Mouse X") * sensitivity;
         mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
@@ -65,9 +69,19 @@ public class SFPSC_FPSCamera : MonoBehaviour
         rotY += mouseX;
 
         // Placing values
-        _cam.transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
-        player.Rotate(Vector3.up * mouseX);
+        _cam.transform.localRotation = _isControllAlowed
+            ? Quaternion.Euler(rotX, rotY, rotZ) 
+            : CameraPosition.localRotation;
+        
+        if(_isControllAlowed)
+            player.Rotate(Vector3.up * mouseX);
+        
         _cam.transform.position = CameraPosition.position;
+    }
+
+    public void DisableControll()
+    {
+        _isControllAlowed = false;
     }
 
     public void Shake(float magnitude, float duration)
