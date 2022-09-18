@@ -27,15 +27,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
 public class SFPSC_FPSCamera : MonoBehaviour
 {
     public static SFPSC_FPSCamera cam;
-    private Camera cam_;
-    
+
     public float sensitivity = 3;
+    private Camera _cam;
+
     [HideInInspector]
     public float mouseX, mouseY;
+
     public float maxUpAngle = 80;
     public float maxDownAngle = -80;
     public Transform player;
@@ -44,8 +45,7 @@ public class SFPSC_FPSCamera : MonoBehaviour
     private void Awake()
     {
         cam = this;
-        cam_ = this.GetComponent<Camera>();
-
+        _cam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -65,9 +65,9 @@ public class SFPSC_FPSCamera : MonoBehaviour
         rotY += mouseX;
 
         // Placing values
-        transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
+        _cam.transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
         player.Rotate(Vector3.up * mouseX);
-        transform.position = CameraPosition.position;
+        _cam.transform.position = CameraPosition.position;
     }
 
     public void Shake(float magnitude, float duration)
