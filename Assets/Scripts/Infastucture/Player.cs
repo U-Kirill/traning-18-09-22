@@ -14,7 +14,7 @@ namespace Infastucture
 
         private void Update()
         {
-            if(_rigidbody.velocity.magnitude > Mathf.Epsilon)
+            // if(_rigidbody.velocity.magnitude > Mathf.Epsilon)
                 Moved?.Invoke();
         }
 
