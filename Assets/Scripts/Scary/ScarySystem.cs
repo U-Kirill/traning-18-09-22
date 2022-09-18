@@ -19,7 +19,10 @@ namespace Scary
         
         public void ShowRedEye()
         {
-            RedEyes redEyes = Instantiate(_redEye, _player.transform.position, _player.transform.rotation);
+            Vector3 position = _player.transform.position;
+            position.y = 0;
+            
+            RedEyes redEyes = Instantiate(_redEye, position, _player.transform.rotation);
             redEyes.Show(_player.transform);
         }
 

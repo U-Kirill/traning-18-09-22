@@ -31,9 +31,8 @@ public class CompsitionRoot : MonoBehaviour
     {
         NoteSystem.AllCollected += OnCollected;
         PlayerMove.Moved += OnPlayerMove;
-
-        _redEyeTimout = 120;
-        _scaryWalkTimeout = 600;
+        
+        ScarySystem.ShowRedEye();
         _timers = new List<Timer>
         {
             new Timer(_redEyeTimout, ScarySystem.ShowRedEye),
