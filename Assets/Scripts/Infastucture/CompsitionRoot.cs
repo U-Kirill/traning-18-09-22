@@ -5,7 +5,6 @@ using UnityEngine;
 public class CompsitionRoot : MonoBehaviour
 {
     [SerializeField] private NoteSystem _noteSystem;
-
     [SerializeField] private Player _playerObject;
 
     private IPlayerMove _playerMove;
