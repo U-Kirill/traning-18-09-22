@@ -4,8 +4,9 @@ public class SelectionBar : MonoBehaviour
 {
     [SerializeField] private ArrowActivation _arrowActivation;
     [SerializeField] private GameObject _panel;
-    [SerializeField] private TreeZone _treeZone;
-
+    [SerializeField] private Transform _container;
+    
+    private TreeZone[] _treeZones;
     private bool _isInZone;
 
     private void Update()
@@ -19,19 +20,29 @@ public class SelectionBar : MonoBehaviour
 
     private void OnEnable()
     {
-        _treeZone.Touched += OnTouched;
-        _treeZone.Goned += OnGoned;
+        _treeZones = _container.GetComponentsInChildren<TreeZone>();
+
+        foreach (var treeZone in _treeZones)
+        {
+            treeZone.Touched += OnTouched;
+            treeZone.Goned += OnGoned;
+        }
+
         _arrowActivation.Selected += OnSelected;
     }
 
     private void OnDisable()
     {
-        _treeZone.Touched -= OnTouched;
-        _treeZone.Goned -= OnGoned;
+        foreach (var treeZone in _treeZones)
+        {
+            treeZone.Touched -= OnTouched;
+            treeZone.Goned -= OnGoned;
+        }
+
         _arrowActivation.Selected -= OnSelected;
     }
 
-    private void OnTouched()
+    private void OnTouched(Tree tree)
     {
         _isInZone = true;
     }

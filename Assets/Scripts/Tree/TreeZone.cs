@@ -1,4 +1,3 @@
-using Infastucture;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +6,7 @@ public class TreeZone : MonoBehaviour
 {
     private Tree _tree;
 
-    public event UnityAction Touched;
+    public event UnityAction<Tree> Touched;
     public event UnityAction Goned;
 
     private void Start()
@@ -19,7 +18,7 @@ public class TreeZone : MonoBehaviour
     {
         if (other.TryGetComponent(out Player player))
         {
-            Touched?.Invoke();
+            Touched?.Invoke(_tree);
         }
     }
 

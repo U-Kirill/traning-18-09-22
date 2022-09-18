@@ -3,22 +3,32 @@ using UnityEngine.UI;
 
 public class HintDrawArrow : MonoBehaviour
 {
-    [SerializeField] private TreeZone _treeZone;
+    [SerializeField] private Transform _container;
     [SerializeField] private Text _text;
+
+    private TreeZone[] _treeZones;
 
     private void OnEnable()
     {
-        _treeZone.Touched += OnTouched;
-        _treeZone.Goned += OnGoned;
+        _treeZones = _container.GetComponentsInChildren<TreeZone>();
+
+        foreach (var treeZone in _treeZones)
+        {
+            treeZone.Touched += OnTouched;
+            treeZone.Goned += OnGoned;
+        }
     }
 
     private void OnDisable()
     {
-        _treeZone.Touched -= OnTouched;
-        _treeZone.Goned -= OnGoned;
+        foreach (var treeZone in _treeZones)
+        {
+            treeZone.Touched -= OnTouched;
+            treeZone.Goned -= OnGoned;
+        }
     }
 
-    private void OnTouched()
+    private void OnTouched(Tree tree)
     {
         _text.gameObject.SetActive(true);
     }
