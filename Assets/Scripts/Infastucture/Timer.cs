@@ -25,7 +25,7 @@ public class Timer
 
     private void Round()
     {
-        _onTimerRound();
         _accumulatedTime = 0;
+        _onTimerRound();
     }
 }

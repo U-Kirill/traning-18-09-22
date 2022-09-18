@@ -7,9 +7,9 @@ public class Screamer : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private float _time;
 
-    private void Show()
+    public void Show()
     {
-        enabled = true;
+        gameObject.SetActive(true);
         _image.DOFade(1, _time);
     }
 }

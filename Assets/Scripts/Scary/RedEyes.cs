@@ -8,13 +8,13 @@ namespace Scary
     public class RedEyes : MonoBehaviour
     {
         [SerializeField] private AnimationCurve _moveCurve;
-        [SerializeField] private float _duration = 5f;
         [SerializeField] private List<SpriteRenderer> _sprites;
 
         private Player _player;
         private float _effectStartTime;
         private bool _isShowing;
         private float _startEulerRotation;
+        private float _duration = 5f;
 
         private void Update()
         {
@@ -35,10 +35,11 @@ namespace Scary
             return effectProgress;
         }
         
-        public void Show(Transform player)
+        public void Show(Transform player, float duration)
         {
             SetRotation(player.eulerAngles.y);
-            
+
+            _duration = duration;
             _effectStartTime = Time.time;
             _isShowing = true;
             _startEulerRotation = transform.eulerAngles.y;
