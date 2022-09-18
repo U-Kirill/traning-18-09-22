@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ArrowRotation : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    //[SerializeField] private Player _player;
 
     private void OnEnable()
     {
