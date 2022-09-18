@@ -1,15 +1,20 @@
-﻿using Danil;
+using Danil;
+using Infastucture;
 using UnityEngine;
 
 public class CompsitionRoot : MonoBehaviour
 {
     [SerializeField] private NoteSystem _noteSystem;
 
+    [SerializeField] private Player _playerObject;
+    
     private IPlayerMove _playerMove;
     private IMessageSystem _messageSystem => _noteSystem;
 
     private void Awake()
     {
+        _playerMove = _playerObject;
+        
         Compose();
     }
 
