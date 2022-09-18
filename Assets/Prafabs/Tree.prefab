@@ -198,6 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679e6722582f24f46b0d0db0bb1af8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _up: {fileID: 8078183685523683859}
+  _down: {fileID: 8078183686013246887}
+  _left: {fileID: 8078183686519789474}
+  _right: {fileID: 8078183686009385778}
 --- !u!114 &8078183685514356359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,14 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0509e114231a8f442889ee3e631d6301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _container: {fileID: 0}
   _buttonArrowUp: {fileID: 0}
   _buttonArrowDown: {fileID: 0}
   _buttonArrowLeft: {fileID: 0}
   _buttonArrowRight: {fileID: 0}
-  _arrowUp: {fileID: 8078183685523683859}
-  _arrowDown: {fileID: 8078183686013246887}
-  _arrowLeft: {fileID: 8078183686519789474}
-  _arrowRight: {fileID: 8078183686009385778}
 --- !u!136 &8078183685514356361
 CapsuleCollider:
   m_ObjectHideFlags: 0
