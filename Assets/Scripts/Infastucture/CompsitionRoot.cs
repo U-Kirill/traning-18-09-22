@@ -7,16 +7,16 @@ using UnityEngine;
 public class CompsitionRoot : MonoBehaviour
 {
     [SerializeField] private NoteSystem _noteSystem;
-    [SerializeField] private ScarySystem _scarySystemObject;
-    [SerializeField] private Player _playerObject;
+    [SerializeField] private ScarySystem _scarySystem;
+    [SerializeField] private Player _player;
     [SerializeField] private int _redEyeTimout;
     [SerializeField]private int _scaryWalkTimeout;
 
     private List<Timer> _timers;
     
-    private IPlayerMove PlayerMove => _playerObject;
+    private IPlayerMove PlayerMove => _player;
     private IMessageSystem NoteSystem => _noteSystem;
-    private IScarySystem ScarySystem => _scarySystemObject;
+    private IScarySystem ScarySystem => _scarySystem;
 
     private void Awake() => 
         Compose();
@@ -44,7 +44,6 @@ public class CompsitionRoot : MonoBehaviour
     private void OnPlayerMove()
     {
         NoteSystem.OnPlayerMoved(PlayerMove.Position);
-        print(1);
     }
 
     private void OnCollected()
